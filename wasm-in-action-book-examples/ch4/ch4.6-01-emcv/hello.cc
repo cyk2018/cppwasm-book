@@ -27,7 +27,7 @@ void detectFace(IplImage *pImg) {
 	int faceCount = libfacedetection_capi_result_len(g_faceDB);
 	for(int i = 0; i < faceCount; i++) {
 		libfacedetection_capi_face_t face;
-		if(!libfacedetection_capi_result_get(g_faceDB, 0, &face)) {
+		if(!libfacedetection_capi_result_get(g_faceDB, i, &face)) {
 			break;
 		}
 
