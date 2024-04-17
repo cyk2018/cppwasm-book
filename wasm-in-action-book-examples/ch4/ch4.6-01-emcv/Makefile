@@ -21,7 +21,7 @@ EMCV_CFLAGS+=-I./emcv/highgui
 
 default:
 	${DOCKER_RUN} emcc -s ALLOW_MEMORY_GROWTH=1 ${EMCV_CFLAGS} hello.cc ${EMCV_FILES} -o index.html -O1 --preload-file lena512color.bmp
-	go run server.go
+	
 
 sh:
 	${DOCKER_RUN} sh
