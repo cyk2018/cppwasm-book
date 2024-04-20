@@ -11,19 +11,38 @@
 	<button id = cancel onclick=Cancel() disabled = true>Cancel</button>
 	<script>
 	function Pause() {
+		let is_cancel = document.getElementById("cancel").disabled
+		if(is_cancel) {
+			alert("寄");
+			return;
+		} else {
+			document.getElementById("pause").disabled = true;
+			document.getElementById("resume").disabled = false;
+		}
 		Module._pause_main_loop();
 	}
 	function Resume() {
+		let is_cancel = document.getElementById("cancel").disabled
+		if(is_cancel) {
+			alert("寄");
+			return;
+		} else {
+			document.getElementById("pause").disabled = false;
+			document.getElementById("resume").disabled = true;
+		}
 		Module._resume_main_loop();
 	}
 	function Cancel() {
+		document.getElementById("pause").disabled = true;
+		document.getElementById("resume").disabled = true;
+		document.getElementById("cancel").disabled = true;
 		Module._cancel_main_loop();
 	}
 	
 	Module = {};
 	Module.onRuntimeInitialized = function() {
 		document.getElementById("pause").disabled = false;
-		document.getElementById("resume").disabled = false;
+		document.getElementById("resume").disabled = true;
 		document.getElementById("cancel").disabled = false;
 	}
 	</script>
